@@ -1,5 +1,5 @@
 {
-  "name": "People",
+  "name": "people",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,12 +7,27 @@
     "test": "jest"
   },
   "dependencies": {
+    "native-base": "^2.3.10",
     "react": "16.3.0-alpha.2",
-    "react-native": "0.54.2"
+    "react-native": "0.54.2",
+    "react-navigation": "^1.5.8",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "superagent": "^3.8.2"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
+    "eslint": "^4.19.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^3.0.1",
     "jest": "22.4.3",
     "react-test-renderer": "16.3.0-alpha.2"
   },
