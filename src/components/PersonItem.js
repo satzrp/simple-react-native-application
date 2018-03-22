@@ -1,29 +1,31 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
+import PropTypes from 'prop-types'
 import { ListItem, Left, Thumbnail, Body, Text } from 'native-base'
 
-const PersonItem = () => {
+const PersonItem = props => {
+  const thumbnailSource = {
+    uri: props.picture
+  }
   return (
     <ListItem avatar>
       <Left>
-        <Thumbnail
-          style={styles.avatar}
-          source={{
-            uri: 'https://randomuser.me/api/portraits/thumb/men/25.jpg'
-          }}
-        />
+        <Thumbnail style={styles.avatar} source={thumbnailSource} />
       </Left>
       <Body>
-        <Text>Sathish Kumar</Text>
+        <Text>{props.email}</Text>
         <Text note style={styles.meta}>
-          sathish@gmail.com
+          {props.email}
         </Text>
       </Body>
     </ListItem>
   )
 }
 
-export default PersonItem
+PersonItem.propTypes = {
+  email: PropTypes.string,
+  picture: PropTypes.string
+}
 
 const styles = StyleSheet.create({
   avatar: {
@@ -34,3 +36,5 @@ const styles = StyleSheet.create({
     marginTop: 5
   }
 })
+
+export default PersonItem
