@@ -17,7 +17,7 @@ class PeopleScreen extends Component {
     return (
       <PersonItem
         key={email}
-        name={name.first}
+        name={name}
         email={email}
         picture={picture.thumbnail}
       />

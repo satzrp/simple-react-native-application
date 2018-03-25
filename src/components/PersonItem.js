@@ -4,6 +4,12 @@ import PropTypes from 'prop-types'
 import { ListItem, Left, Thumbnail, Body, Text } from 'native-base'
 
 const PersonItem = props => {
+  const capitalizeFirstChar = str =>
+    str.charAt(0).toUpperCase() + str.substring(1)
+  const fullName =
+    capitalizeFirstChar(props.name.first) +
+    ' ' +
+    capitalizeFirstChar(props.name.last)
   const thumbnailSource = {
     uri: props.picture
   }
@@ -13,7 +19,7 @@ const PersonItem = props => {
         <Thumbnail style={styles.avatar} source={thumbnailSource} />
       </Left>
       <Body>
-        <Text>{props.email}</Text>
+        <Text style={styles.name}>{fullName}</Text>
         <Text note style={styles.meta}>
           {props.email}
         </Text>
@@ -23,6 +29,7 @@ const PersonItem = props => {
 }
 
 PersonItem.propTypes = {
+  name: PropTypes.object,
   email: PropTypes.string,
   picture: PropTypes.string
 }
@@ -32,7 +39,12 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48
   },
+  name: {
+    fontFamily: 'Avenir',
+    fontSize: 16
+  },
   meta: {
+    fontFamily: 'Avenir',
     marginTop: 5
   }
 })
