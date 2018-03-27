@@ -15,17 +15,7 @@ const AppNavigator = StackNavigator(
     }
   },
   {
-    initialRouteName: 'Profile',
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#F37780',
-        borderBottomWidth: 0
-      },
-      headerTintColor: '#FFF',
-      headerTitleStyle: {
-        fontWeight: 'bold'
-      }
-    }
+    initialRouteName: 'People'
   }
 )
 

@@ -4,24 +4,28 @@ import PropTypes from 'prop-types'
 import { ListItem, Left, Thumbnail, Body, Text } from 'native-base'
 
 const PersonItem = props => {
-  const capitalizeFirstChar = str =>
-    str.charAt(0).toUpperCase() + str.substring(1)
-  const fullName =
-    capitalizeFirstChar(props.name.first) +
-    ' ' +
-    capitalizeFirstChar(props.name.last)
+  let { name, email, picture } = props.person
+  const capitalizeFirstChar = str => str.charAt(0).toUpperCase() + str.substring(1)
+  const fullName = capitalizeFirstChar(name.first) + ' ' + capitalizeFirstChar(name.last)
   const thumbnailSource = {
-    uri: props.picture
+    uri: picture.thumbnail
   }
   return (
-    <ListItem avatar>
+    <ListItem
+      avatar
+      onPress={() =>
+        props.navigation.navigate('Profile', {
+          selectedPerson: props.person
+        })
+      }
+    >
       <Left>
         <Thumbnail style={styles.avatar} source={thumbnailSource} />
       </Left>
       <Body>
         <Text style={styles.name}>{fullName}</Text>
         <Text note style={styles.meta}>
-          {props.email}
+          {email}
         </Text>
       </Body>
     </ListItem>
@@ -29,9 +33,8 @@ const PersonItem = props => {
 }
 
 PersonItem.propTypes = {
-  name: PropTypes.object,
-  email: PropTypes.string,
-  picture: PropTypes.string
+  person: PropTypes.object,
+  navigation: PropTypes.any
 }
 
 const styles = StyleSheet.create({
@@ -40,11 +43,9 @@ const styles = StyleSheet.create({
     height: 48
   },
   name: {
-    fontFamily: 'Avenir',
     fontSize: 16
   },
   meta: {
-    fontFamily: 'Avenir',
     marginTop: 5
   }
 })

@@ -7,21 +7,23 @@ import { fetchPeople } from './../data/people/PeopleActions'
 
 class PeopleScreen extends Component {
   static navigationOptions = {
-    title: 'People'
+    title: 'People',
+    headerStyle: {
+      backgroundColor: '#3E84C5',
+      borderBottomWidth: 0
+    },
+    headerTintColor: '#FFF',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
   }
   static propTypes = {
     fetchPeople: PropTypes.func,
-    people: PropTypes.array
+    people: PropTypes.array,
+    navigation: PropTypes.any
   }
-  getPersonItem ({ name, email, picture }) {
-    return (
-      <PersonItem
-        key={email}
-        name={name}
-        email={email}
-        picture={picture.thumbnail}
-      />
-    )
+  getPersonItem (person) {
+    return <PersonItem key={person.email} person={person} navigation={this.props.navigation} />
   }
   componentDidMount () {
     this.props.fetchPeople()
@@ -29,7 +31,6 @@ class PeopleScreen extends Component {
   render () {
     let personItems = ''
     if (this.props.people !== undefined) {
-      console.log(this.props.people)
       personItems = this.props.people.map(person => this.getPersonItem(person))
     }
     return (
